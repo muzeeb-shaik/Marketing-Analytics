@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Week 1 | Marketing Analytics: Spring 2021</title>
+  <meta name="description" content="You can use the code from this book to analyze the data from class in R" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Week 1 | Marketing Analytics: Spring 2021" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="You can use the code from this book to analyze the data from class in R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Week 1 | Marketing Analytics: Spring 2021" />
+  
+  <meta name="twitter:description" content="You can use the code from this book to analyze the data from class in R" />
+  
+
+<meta name="author" content="Muzeeb Shaik" />
+
+
+<meta name="date" content="2021-01-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="week-2.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome to Marketing Analytics with R</a></li>
+<li class="chapter" data-level="1" data-path="week-1.html"><a href="week-1.html"><i class="fa fa-check"></i><b>1</b> Week 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="week-1.html"><a href="week-1.html#mini-example"><i class="fa fa-check"></i><b>1.1</b> Mini-Example</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="week-1.html"><a href="week-1.html#task-description"><i class="fa fa-check"></i><b>1.1.1</b> Task Description</a></li>
+<li class="chapter" data-level="1.1.2" data-path="week-1.html"><a href="week-1.html#variables-in-the-data"><i class="fa fa-check"></i><b>1.1.2</b> Variables in the Data</a></li>
+<li class="chapter" data-level="1.1.3" data-path="week-1.html"><a href="week-1.html#analysis-using-r"><i class="fa fa-check"></i><b>1.1.3</b> Analysis using R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="week-1.html"><a href="week-1.html#customer-model-analytics-i-regression"><i class="fa fa-check"></i><b>1.2</b> Customer Model Analytics I: Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="week-2.html"><a href="week-2.html"><i class="fa fa-check"></i><b>2</b> Week 2</a></li>
+<li class="chapter" data-level="3" data-path="week-4.html"><a href="week-4.html"><i class="fa fa-check"></i><b>3</b> Week 4</a></li>
+<li class="chapter" data-level="4" data-path="week-4.html"><a href="week-4.html#week-4"><i class="fa fa-check"></i><b>4</b> Week 4</a></li>
+<li class="chapter" data-level="5" data-path="week-5.html"><a href="week-5.html"><i class="fa fa-check"></i><b>5</b> Week 5</a></li>
+<li class="chapter" data-level="6" data-path="week-6.html"><a href="week-6.html"><i class="fa fa-check"></i><b>6</b> Week 6</a></li>
+<li class="chapter" data-level="7" data-path="week-7.html"><a href="week-7.html"><i class="fa fa-check"></i><b>7</b> Week 7</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Marketing Analytics: Spring 2021</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-1" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Week 1</h1>
+<div id="mini-example" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Mini-Example</h2>
+<div id="task-description" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Task Description</h3>
+<p>The goal of the mini-example is to examine the association between firm’s discretionary spending (advertising, R&amp;D) and top-line financial impact (sales)</p>
+<ul>
+<li>How many variables are in the dataset? Which ones are identifier, categorical vs. continuous?</li>
+<li>What is(are) the focal outcome variable(s)?</li>
+<li>What is(are) the focal predictor variable(s)?</li>
+<li>What is(are) the focal “control” variable(s)?</li>
+<li>What is the mean of sales, advertising and R&amp;D?</li>
+<li>How are sales, advertising and R&amp;D different in b2b vs. b2c firms?</li>
+<li>How do advertising and R&amp;D affect sales?</li>
+</ul>
+</div>
+<div id="variables-in-the-data" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Variables in the Data</h3>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th align="center">What does it mean?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gvkey</td>
+<td align="center">6-digit Firm id</td>
+</tr>
+<tr class="even">
+<td>datadate</td>
+<td align="center">fiscal year</td>
+</tr>
+<tr class="odd">
+<td>pure_b2b</td>
+<td align="center">Indicator: Only in B2B sector (1) – otherwise (0)</td>
+</tr>
+<tr class="even">
+<td>Sales</td>
+<td align="center">Sales in Millions of Dollars</td>
+</tr>
+<tr class="odd">
+<td>xad</td>
+<td align="center">Advertising expenditure in millions of dollars</td>
+</tr>
+<tr class="even">
+<td>xrd</td>
+<td align="center">R&amp;D expenditure in millions of dollars</td>
+</tr>
+<tr class="odd">
+<td>fmsize_at</td>
+<td align="center">Natural log of the book value of total assets</td>
+</tr>
+<tr class="even">
+<td>mksh2</td>
+<td align="center">Ratio of firm’s overall sales revenue to the sales revenue of all firms in the same 2-digit SIC code industry</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="analysis-using-r" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Analysis using R</h3>
+<p>The first step is to include all the libraries we use in this exercise. An alternative approach is to load libraries specific to functions before using the function.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="week-1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="week-1.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="week-1.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>The next step is to import data. We will use the <em>read_excel</em> function to import excel file into R.</p>
+<p>You can use the <a href="http://rfunction.com/archives/1001"><em>setwd</em></a> function to set the working directory to the folder which has your data or give the full path of your excel file wile reading the excel file.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="week-1.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Data</span></span>
+<span id="cb2-2"><a href="week-1.html#cb2-2" aria-hidden="true" tabindex="-1"></a>mini_case_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;Mini-case data.xlsx&quot;</span>)</span></code></pre></div>
+<div id="summary-statistics" class="section level4" number="1.1.3.1">
+<h4><span class="header-section-number">1.1.3.1</span> Summary Statistics</h4>
+<p>In R, there are multiple ways to check the summary statistics of your data. (<a href="http://www.sthda.com/english/wiki/descriptive-statistics-and-graphics">Link 1</a>,<a href="https://www.statmethods.net/stats/descriptives.html">Link 2</a>)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="week-1.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary stats - sales</span></span>
+<span id="cb3-2"><a href="week-1.html#cb3-2" aria-hidden="true" tabindex="-1"></a>summary_sales <span class="ot">&lt;-</span> mini_case_data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean_sales =</span> <span class="fu">mean</span>(sales),<span class="at">std_dev_sales =</span> <span class="fu">sd</span>(sales), <span class="at">min_sale =</span> <span class="fu">min</span>(sales), <span class="at">max_sales =</span> <span class="fu">max</span>(sales) )</span>
+<span id="cb3-3"><a href="week-1.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="week-1.html#cb3-4" aria-hidden="true" tabindex="-1"></a>summary_sales</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 5
+##       n mean_sales std_dev_sales min_sale max_sales
+##   &lt;int&gt;      &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1  1000     20082.        34027.     29.7    160123</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="week-1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary stats - xad</span></span>
+<span id="cb5-2"><a href="week-1.html#cb5-2" aria-hidden="true" tabindex="-1"></a>summary_xad <span class="ot">&lt;-</span> mini_case_data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean_xad =</span> <span class="fu">mean</span>(xad),<span class="at">std_dev_xad =</span> <span class="fu">sd</span>(xad), <span class="at">min_sale =</span> <span class="fu">min</span>(xad), <span class="at">max_xad =</span> <span class="fu">max</span>(xad) )</span>
+<span id="cb5-3"><a href="week-1.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="week-1.html#cb5-4" aria-hidden="true" tabindex="-1"></a>summary_xad</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 5
+##       n mean_xad std_dev_xad min_sale max_xad
+##   &lt;int&gt;    &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+## 1  1000     485.        806.    0.397    3698</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="week-1.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary stats - xrd</span></span>
+<span id="cb7-2"><a href="week-1.html#cb7-2" aria-hidden="true" tabindex="-1"></a>summary_xrd <span class="ot">&lt;-</span> mini_case_data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean_xrd =</span> <span class="fu">mean</span>(xrd),<span class="at">std_dev_xrd =</span> <span class="fu">sd</span>(xrd), <span class="at">min_sale =</span> <span class="fu">min</span>(xrd), <span class="at">max_xrd =</span> <span class="fu">max</span>(xrd) )</span>
+<span id="cb7-3"><a href="week-1.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="week-1.html#cb7-4" aria-hidden="true" tabindex="-1"></a>summary_xrd</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 5
+##       n mean_xrd std_dev_xrd min_sale max_xrd
+##   &lt;int&gt;    &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+## 1  1000     789.       1716.        0    7400</code></pre>
+</div>
+<div id="sales-regression" class="section level4" number="1.1.3.2">
+<h4><span class="header-section-number">1.1.3.2</span> Sales Regression</h4>
+<p>The following link provides a brief introduction to linear regression.</p>
+<ul>
+<li><a href="http://uc-r.github.io/linear_regression">http://uc-r.github.io/linear_regression</a></li>
+</ul>
+<p>For our sales regression</p>
+<ul>
+<li>Dependent Variable : sales</li>
+<li>Independet Variables: xad,xrd</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-1.html#cb9-1" aria-hidden="true" tabindex="-1"></a>sales_regression  <span class="ot">&lt;-</span>  <span class="fu">lm</span>(sales <span class="sc">~</span> xad<span class="sc">+</span>xrd , <span class="at">data =</span>mini_case_data )</span>
+<span id="cb9-2"><a href="week-1.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="week-1.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of the regression</span></span>
+<span id="cb9-4"><a href="week-1.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression)<span class="sc">$</span>coefficients</span></code></pre></div>
+<pre><code>##                Estimate  Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) 5273.430435 881.2489482  5.984042 3.032149e-09
+## xad           25.077253   1.2282534 20.417002 1.095284e-77
+## xrd            3.346444   0.5768758  5.800979 8.847303e-09</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-1.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression)<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.5117014</code></pre>
+<p>The regression results show the following</p>
+<ul>
+<li>Advertising (25.0773) and R&amp;D (3.3464) have a positive effect on revenue</li>
+<li>R-squared (model fit index) is 0.5117</li>
+</ul>
+<p>We can add more control variables to the regression model</p>
+<ul>
+<li>Control Variables: pure_b2b, fmsize_at, mksh2</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="week-1.html#cb13-1" aria-hidden="true" tabindex="-1"></a>sales_regression_with_controls  <span class="ot">&lt;-</span>  <span class="fu">lm</span>(sales <span class="sc">~</span> xad<span class="sc">+</span>xrd<span class="sc">+</span>pure_b2b<span class="sc">+</span>fmsize_at<span class="sc">+</span>mksh2 ,<span class="at">data =</span>mini_case_data )</span>
+<span id="cb13-2"><a href="week-1.html#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="week-1.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of the regression</span></span>
+<span id="cb13-4"><a href="week-1.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression_with_controls)<span class="sc">$</span>coefficients</span></code></pre></div>
+<pre><code>##                  Estimate   Std. Error    t value     Pr(&gt;|t|)
+## (Intercept) -39982.337166 3956.2692006 -10.106071 6.359213e-23
+## xad             15.939687    1.1975483  13.310267 2.564608e-37
+## xrd              2.978288    0.5275706   5.645289 2.150902e-08
+## pure_b2b     -4806.439350 2091.3768307  -2.298218 2.175625e-02
+## fmsize_at     5179.377668  505.7198986  10.241594 1.802798e-23
+## mksh2       104078.783632 9682.0954844  10.749613 1.421889e-25</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="week-1.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression_with_controls)<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.6434498</code></pre>
+<p>For the new model</p>
+<ul>
+<li>R-squared (model fit index) improves to 0.6434 from 0.5117</li>
+<li>The relationship between control variables and sales makes sense</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="customer-model-analytics-i-regression" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Customer Model Analytics I: Regression</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="week-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MBA Course Code Book.pdf", "MBA Course Code Book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

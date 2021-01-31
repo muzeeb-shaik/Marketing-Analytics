@@ -24,7 +24,7 @@
 <meta name="author" content="Muzeeb Shaik" />
 
 
-<meta name="date" content="2021-01-29" />
+<meta name="date" content="2021-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,8 +147,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="week-1.html"><a href="week-1.html#customer-model-analytics-i-regression"><i class="fa fa-check"></i><b>1.2</b> Customer Model Analytics I: Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="week-2.html"><a href="week-2.html"><i class="fa fa-check"></i><b>2</b> Week 2</a></li>
-<li class="chapter" data-level="3" data-path="week-4.html"><a href="week-4.html"><i class="fa fa-check"></i><b>3</b> Week 4</a></li>
-<li class="chapter" data-level="4" data-path="week-4.html"><a href="week-4.html#week-4"><i class="fa fa-check"></i><b>4</b> Week 4</a></li>
+<li class="chapter" data-level="3" data-path="week-3.html"><a href="week-3.html"><i class="fa fa-check"></i><b>3</b> Week 3</a></li>
+<li class="chapter" data-level="4" data-path="week-4.html"><a href="week-4.html"><i class="fa fa-check"></i><b>4</b> Week 4</a></li>
 <li class="chapter" data-level="5" data-path="week-5.html"><a href="week-5.html"><i class="fa fa-check"></i><b>5</b> Week 5</a></li>
 <li class="chapter" data-level="6" data-path="week-6.html"><a href="week-6.html"><i class="fa fa-check"></i><b>6</b> Week 6</a></li>
 <li class="chapter" data-level="7" data-path="week-7.html"><a href="week-7.html"><i class="fa fa-check"></i><b>7</b> Week 7</a></li>
@@ -275,9 +275,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##       n mean_xrd std_dev_xrd min_sale max_xrd
 ##   &lt;int&gt;    &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
 ## 1  1000     789.       1716.        0    7400</code></pre>
+<p>We can also compare summary statistics by grouping the data based on some categorical variables.</p>
+<p>In our case, we will group the data by <em>pure_b2b</em> and compare the summary statistics</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-1.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary stats - sales</span></span>
+<span id="cb9-2"><a href="week-1.html#cb9-2" aria-hidden="true" tabindex="-1"></a>summary_sales_by_group <span class="ot">&lt;-</span> mini_case_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(pure_b2b)<span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean_sales =</span> <span class="fu">mean</span>(sales),<span class="at">std_dev_sales =</span> <span class="fu">sd</span>(sales), <span class="at">min_sale =</span> <span class="fu">min</span>(sales), <span class="at">max_sales =</span> <span class="fu">max</span>(sales) )</span>
+<span id="cb9-3"><a href="week-1.html#cb9-3" aria-hidden="true" tabindex="-1"></a>summary_sales_by_group</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 6
+##   pure_b2b     n mean_sales std_dev_sales min_sale max_sales
+##      &lt;dbl&gt; &lt;int&gt;      &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1        0   873     21027.        36148.     29.7    160123
+## 2        1   127     13584.         9391.   2960.      53999</code></pre>
+<p>Similarly we can compare for other variables.</p>
 </div>
-<div id="sales-regression" class="section level4" number="1.1.3.2">
-<h4><span class="header-section-number">1.1.3.2</span> Sales Regression</h4>
+<div id="graph-of-mean-sales-b2b-vs.-non-b2b-firms" class="section level4" number="1.1.3.2">
+<h4><span class="header-section-number">1.1.3.2</span> Graph of Mean Sales (B2B vs. non-B2B Firms)</h4>
+<p>We can plot the mean sales for B2B vs. non-B2B Firms</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-1.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert pure_b2b as a factor variable</span></span>
+<span id="cb11-2"><a href="week-1.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="week-1.html#cb11-3" aria-hidden="true" tabindex="-1"></a>summary_sales_by_group<span class="sc">$</span>pure_b2b <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(summary_sales_by_group<span class="sc">$</span>pure_b2b)</span>
+<span id="cb11-4"><a href="week-1.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="week-1.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb11-6"><a href="week-1.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_sales_by_group, <span class="fu">aes</span>(<span class="at">x =</span> pure_b2b, <span class="at">y =</span>mean_sales )) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="week-1.html#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb11-8"><a href="week-1.html#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Mean Sales&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="week-1.html#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;Mean of Sales by pure_b2b&quot;</span>)</span></code></pre></div>
+<p><img src="MBA-Course-Code-Book_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="sales-regression" class="section level4" number="1.1.3.3">
+<h4><span class="header-section-number">1.1.3.3</span> Sales Regression</h4>
 <p>The following link provides a brief introduction to linear regression.</p>
 <ul>
 <li><a href="http://uc-r.github.io/linear_regression">http://uc-r.github.io/linear_regression</a></li>
@@ -287,15 +312,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Dependent Variable : sales</li>
 <li>Independet Variables: xad,xrd</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-1.html#cb9-1" aria-hidden="true" tabindex="-1"></a>sales_regression  <span class="ot">&lt;-</span>  <span class="fu">lm</span>(sales <span class="sc">~</span> xad<span class="sc">+</span>xrd , <span class="at">data =</span>mini_case_data )</span>
-<span id="cb9-2"><a href="week-1.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="week-1.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of the regression</span></span>
-<span id="cb9-4"><a href="week-1.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression)<span class="sc">$</span>coefficients</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-1.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sales_regression  <span class="ot">&lt;-</span>  <span class="fu">lm</span>(sales <span class="sc">~</span> xad<span class="sc">+</span>xrd , <span class="at">data =</span>mini_case_data )</span>
+<span id="cb12-2"><a href="week-1.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="week-1.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of the regression</span></span>
+<span id="cb12-4"><a href="week-1.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression)<span class="sc">$</span>coefficients</span></code></pre></div>
 <pre><code>##                Estimate  Std. Error   t value     Pr(&gt;|t|)
 ## (Intercept) 5273.430435 881.2489482  5.984042 3.032149e-09
 ## xad           25.077253   1.2282534 20.417002 1.095284e-77
 ## xrd            3.346444   0.5768758  5.800979 8.847303e-09</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-1.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="week-1.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.5117014</code></pre>
 <p>The regression results show the following</p>
 <ul>
@@ -306,10 +331,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Control Variables: pure_b2b, fmsize_at, mksh2</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="week-1.html#cb13-1" aria-hidden="true" tabindex="-1"></a>sales_regression_with_controls  <span class="ot">&lt;-</span>  <span class="fu">lm</span>(sales <span class="sc">~</span> xad<span class="sc">+</span>xrd<span class="sc">+</span>pure_b2b<span class="sc">+</span>fmsize_at<span class="sc">+</span>mksh2 ,<span class="at">data =</span>mini_case_data )</span>
-<span id="cb13-2"><a href="week-1.html#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="week-1.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of the regression</span></span>
-<span id="cb13-4"><a href="week-1.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression_with_controls)<span class="sc">$</span>coefficients</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-1.html#cb16-1" aria-hidden="true" tabindex="-1"></a>sales_regression_with_controls  <span class="ot">&lt;-</span>  <span class="fu">lm</span>(sales <span class="sc">~</span> xad<span class="sc">+</span>xrd<span class="sc">+</span>pure_b2b<span class="sc">+</span>fmsize_at<span class="sc">+</span>mksh2 ,<span class="at">data =</span>mini_case_data )</span>
+<span id="cb16-2"><a href="week-1.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="week-1.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of the regression</span></span>
+<span id="cb16-4"><a href="week-1.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression_with_controls)<span class="sc">$</span>coefficients</span></code></pre></div>
 <pre><code>##                  Estimate   Std. Error    t value     Pr(&gt;|t|)
 ## (Intercept) -39982.337166 3956.2692006 -10.106071 6.359213e-23
 ## xad             15.939687    1.1975483  13.310267 2.564608e-37
@@ -317,7 +342,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## pure_b2b     -4806.439350 2091.3768307  -2.298218 2.175625e-02
 ## fmsize_at     5179.377668  505.7198986  10.241594 1.802798e-23
 ## mksh2       104078.783632 9682.0954844  10.749613 1.421889e-25</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="week-1.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression_with_controls)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="week-1.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sales_regression_with_controls)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.6434498</code></pre>
 <p>For the new model</p>
 <ul>

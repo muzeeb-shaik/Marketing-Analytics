@@ -1,0 +1,250 @@
+# Week 2
+```{r include=FALSE}
+# automatically create a bib database for R packages
+```
+
+## Sandwich Store Example
+### Task Description
+
+The goal is to predict purchase probability and purchase amount based on customer satisfaction. 
+
+Data Description: See “Predicting Purchase and Amount Demo.xlsx”
+
+```{r echo=FALSE }
+library(readxl)
+data_labels <- read_excel("Predicting Purchase and Amount Demo.xlsx", sheet = "Data Codebook")
+#data_labels <- data_labels[,-3]
+
+knitr::kable(data_labels, format = "html")
+```
+### Analysis using R
+We need to make sure all necessary packages are installed.  If any of these packages are not installed, write `install.packages("<name of package>")`. The next step is to include all the libraries we use in this exercise. 
+```{r include=TRUE , warning= FALSE ,message=FALSE}
+library(readxl)
+library(dplyr)
+library(fBasics)
+library(car)
+library(epiDisplay)
+library(ggplot2)
+```
+The next step is to import data. We will use the `read_excel` function to import excel file into R.
+
+```{r include=TRUE }
+# Importing Data
+satisfaction_data <- read_excel("Predicting Purchase and Amount Demo.xlsx")
+```
+Some variables can be represented on an interval scale
+
+  - Examples: satisfaction, Income, height, price, and temperature
+  
+Categorical variables can only be represented on a nominal scale
+  
+   - Examples: gender, ethnicity, brand, or location
+
+In R, we can convert all the categorical variables into factors.
+```{r include=TRUE }
+# Importing Data
+satisfaction_data$Purchase <- as.factor(satisfaction_data$Purchase)
+satisfaction_data$Gender <- as.factor(satisfaction_data$Gender)
+satisfaction_data$Age <- as.factor(satisfaction_data$Age)
+satisfaction_data$Education <- as.factor(satisfaction_data$Education)
+```
+
+#### Summary Statistics 
+
+##### Continous Variables
+
+Review the means of continuous variables.
+
+```{r include=TRUE }
+# Make a list of variables you want summary statistics for
+var_list <- c("Spending","OverallSAT")
+# Make a data.frame containing summary statistics of interest
+summ_stats <- fBasics::basicStats(satisfaction_data[var_list])
+summ_stats <- as.data.frame(t(summ_stats))
+# Rename some of the columns for convenience
+summ_stats <- summ_stats %>% dplyr::select("nobs","Mean", "Stdev", "Minimum", "Maximum")
+summ_stats <- summ_stats %>% rename('N'= 'nobs')
+```
+```{r echo=FALSE }
+knitr::kable(summ_stats, format = "html")
+```
+- Check if the means and standard deviations “make sense”
+
+- Check the minimum and maximum values and see if they are “correct”
+
+##### Categorical Variables
+
+Review the frequency distribution of categorical variables.
+
+```{r include=TRUE }
+
+# Frequency distribution of Purchase
+tab1(satisfaction_data$Purchase, cum.percent = TRUE)
+
+```
+Similarly 
+```{r include=TRUE }
+
+# Frequency distribution of Education
+tab1(satisfaction_data$Education,  cum.percent = TRUE)
+
+```
+
+##### Mean of satisfaction and spending by purchase outcomes
+
+```{r include=TRUE , warning= FALSE ,message=FALSE}
+library(psych)
+summary_by_by_purchase <- describeBy(satisfaction_data[var_list],satisfaction_data$Purchase, mat=TRUE,digits=3) 
+summary_by_by_purchase <- summary_by_by_purchase %>% dplyr::select("group1","n","mean", "sd", "min", "max")
+summary_by_by_purchase <- summary_by_by_purchase %>% rename('Purchase'= 'group1', 'N' = 'n', "Stdev" ='sd')
+
+```
+```{r echo=FALSE }
+knitr::kable(summary_by_by_purchase, format = "html")
+```
+- Satisfaction is higher for those who purchase
+
+- Spending is zero for those who don’t purchase (make sense; this is a quick data validity check)
+
+
+### Logistic Regression to Predict Purchase Probability Based on Customer Satisfaction
+
+We will fit a logistic regression model to predict purchase probability and purchase amount based on customer satisfaction. The `glm` function fits generalized linear models, a class of models that includes logistic regression. The syntax of the `glm` function is similar to that of `lm`, except that we must pass the argument `family = binomial` in order to tell `R` to run a logistic regression rather than some other type of generalized linear model.
+
+```{r include=TRUE }
+
+# TO specify the level to use as base
+satisfaction_data <- within(satisfaction_data, Education <- relevel(Education, ref = "1"))
+satisfaction_data <- within(satisfaction_data, Gender <- relevel(Gender, ref = "0"))
+satisfaction_data <- within(satisfaction_data, Age <- relevel(Age, ref = "1"))
+
+# Logistic Regression
+logistic_reg <- glm(Purchase ~ OverallSAT+Education+Gender+Age, family = "binomial", data = satisfaction_data)
+
+logistic_reg_coeffitients <- summary(logistic_reg)$coefficients
+```
+
+- Regression Coefficients
+
+  
+```{r echo=FALSE }
+logistic_reg_coeffitients <-round(logistic_reg_coeffitients, 3)
+knitr::kable(logistic_reg_coeffitients, format = "html")
+```
+    
+   -  Implies the following regression model: `log(p/1-p) = 1.228*OverallSAT – .226*Education_undergrad – .331*Education_master + .001*Female – .005 Age_1855 +.012 Age_56 – 6.219`
+  
+- Confusion Matrix
+
+```{r include=TRUE,warnings = FALSE , message= FALSE }
+predict_purchase <- predict(logistic_reg, type="response")
+
+library(caret)
+#confusionMatrix(true_value,predicted)
+confusion_matrix <- confusionMatrix(as.factor(as.integer(predict_purchase  > 0.5)),satisfaction_data$Purchase)
+
+# Matrix
+table <- data.frame(confusion_matrix$table)
+```
+
+```{r echo=FALSE }
+    plotTable <- table %>%
+  mutate(goodbad = ifelse(table$Prediction == table$Reference, "good", "bad")) %>%
+  group_by(Reference) %>%
+  mutate(prop = Freq/sum(Freq))
+    
+    # note: for simple alpha shading by frequency across the table at large, simply use "alpha = Freq" in place of "alpha = prop" when setting up the ggplot call above, e.g.,
+ggplot(data = plotTable, mapping = aes(x = Reference, y = Prediction, fill = goodbad, alpha = Freq)) +
+  geom_tile() +
+  geom_text(aes(label = Freq), vjust = .5, fontface  = "bold", alpha = 1) +
+  scale_fill_manual(values = c(good = "green", bad = "red")) +
+  theme_bw() +
+  xlim(rev(levels(table$Reference)))+xlab("True Purchase")+ylab("Predicted Purchase")
+```
+
+- Accuracy = `(887+644)/(887+644+203+166)`
+```{r echo=FALSE }
+(887+644)/(887+644+203+166)
+```
+
+```{r include=TRUE  ,warnings = FALSE , message= FALSE}
+satisfaction_data %>%
+    mutate(prob = ifelse(Purchase == "1", 1, 0)) %>%
+    ggplot(aes(OverallSAT, prob)) +
+    geom_point(alpha = .15) +
+    geom_smooth(method = "glm", method.args = list(family = "binomial")) +
+    ggtitle("Logistic regression model fit") +
+    xlab("OverallSAT") +
+    ylab("Probability of Purchase")
+```
+```{r include=TRUE  ,warnings = FALSE , message= FALSE}
+satisfaction_data %>%
+    mutate(prob = ifelse(Purchase == "1", 1, 0)) %>%
+    ggplot(aes(OverallSAT, prob)) +
+    geom_point(alpha = .15) +
+    geom_smooth(method = "lm") +
+    ggtitle("Linear regression model fit") +
+    xlab("OverallSAT") +
+    ylab("Probability of Purchase")
+```
+
+
+### Linear Regression to Predict Purchase Amount Based on Customer Satisfaction
+
+- Review of Variables
+```{r echo=FALSE }
+library(readxl)
+data_labels <- read_excel("Predicting Purchase and Amount Demo.xlsx", sheet = "Data Codebook")
+#data_labels <- data_labels[,-3]
+
+knitr::kable(data_labels, format = "html")
+```
+
+- Note that spending is 0 when Purchase is 0. Therefore, we will run the regression on subset of data when purchase is >0.
+
+```{r echo=FALSE }
+knitr::kable(summary_by_by_purchase, format = "html")
+```
+
+#### Linear Regression
+
+-  Dependent variable: Spending
+
+-  Independent variable(s): OverallSAT, Education, Gender, Age
+
+- Data: Subset of data when purchase is `!= 0`
+
+```{r include=TRUE }
+# TO specify the level to use as base
+satisfaction_data <- within(satisfaction_data, Education <- relevel(Education, ref = "1"))
+satisfaction_data <- within(satisfaction_data, Gender <- relevel(Gender, ref = "0"))
+satisfaction_data <- within(satisfaction_data, Age <- relevel(Age, ref = "1"))
+
+# Linear Regression
+
+spending_regression  <-  lm(Spending ~ OverallSAT+Education+Gender+Age , data=subset(satisfaction_data,Purchase!=0)) 
+
+# Summary of the regression
+spending_regression_coef <- summary(spending_regression)$coefficients
+
+```
+- Regression Coefficients
+
+  
+```{r echo=FALSE }
+spending_regression_coef <-round(spending_regression_coef, 3)
+knitr::kable(spending_regression_coef, format = "html")
+```
+
+- Overall satisfaction seems to be a significant predictor of Spending.
+
+### Summary of Logistic Regression
+
+- Logistic regression predicts the probability of the two possible outcomes `y = 0,1` conditional on the values of the independent variables $x_1, x_2, ... x_k$.
+    - Predicting the probability conveys more information than predicting 0 or 1.
+    
+- The logistic regression model is consistent with consumers making choices based on a comparison of the utilities from the two options.
+
+- Estimating the logistic regression model is as simple as estimating the linear regression model, but interpreting the coefficient estimates is slightly different.
+

@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Week 1 | Marketing Analytics: Spring 2021</title>
+  <meta name="description" content="You can use the code from this site to analyze the data from class in R" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Week 1 | Marketing Analytics: Spring 2021" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="You can use the code from this site to analyze the data from class in R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Week 1 | Marketing Analytics: Spring 2021" />
+  
+  <meta name="twitter:description" content="You can use the code from this site to analyze the data from class in R" />
+  
+
+
+
+<meta name="date" content="2021-02-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome to MARK 70120 Marketing Analytics with R</a></li>
+<li class="chapter" data-level="1" data-path="week-1.html"><a href="week-1.html"><i class="fa fa-check"></i><b>1</b> Week 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="week-1.html"><a href="week-1.html#mini-example"><i class="fa fa-check"></i><b>1.1</b> Mini-Example</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="week-1.html"><a href="week-1.html#task-description"><i class="fa fa-check"></i><b>1.1.1</b> Task Description</a></li>
+<li class="chapter" data-level="1.1.2" data-path="week-1.html"><a href="week-1.html#variables-in-the-data"><i class="fa fa-check"></i><b>1.1.2</b> Variables in the Data</a></li>
+<li class="chapter" data-level="1.1.3" data-path="week-1.html"><a href="week-1.html#analysis-using-r"><i class="fa fa-check"></i><b>1.1.3</b> Analysis using R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="week-1.html"><a href="week-1.html#customer-model-analytics-i-regression-demo"><i class="fa fa-check"></i><b>1.2</b> Customer Model Analytics I: Regression Demo</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="week-1.html"><a href="week-1.html#task-description-1"><i class="fa fa-check"></i><b>1.2.1</b> Task Description</a></li>
+<li class="chapter" data-level="1.2.2" data-path="week-1.html"><a href="week-1.html#analysis-using-r-1"><i class="fa fa-check"></i><b>1.2.2</b> Analysis using R</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Marketing Analytics: Spring 2021</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="week-1" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Week 1</h1>
+<div id="mini-example" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Mini-Example</h2>
+<div id="task-description" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Task Description</h3>
+<p>The goal of the mini-example is to examine the association between firm’s discretionary spending (advertising, R&amp;D) and top-line financial impact (sales)</p>
+<ul>
+<li>How many variables are in the dataset? Which ones are identifier, categorical vs. continuous?</li>
+<li>What is(are) the focal outcome variable(s)?</li>
+<li>What is(are) the focal predictor variable(s)?</li>
+<li>What is(are) the focal “control” variable(s)?</li>
+<li>What is the mean of sales, advertising and R&amp;D?</li>
+<li>How are sales, advertising and R&amp;D different in b2b vs. b2c firms?</li>
+<li>How do advertising and R&amp;D affect sales?</li>
+</ul>
+</div>
+<div id="variables-in-the-data" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Variables in the Data</h3>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th align="center">What does it mean?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gvkey</td>
+<td align="center">6-digit Firm id</td>
+</tr>
+<tr class="even">
+<td>datadate</td>
+<td align="center">fiscal year</td>
+</tr>
+<tr class="odd">
+<td>pure_b2b</td>
+<td align="center">Indicator: Only in B2B sector (1) – otherwise (0)</td>
+</tr>
+<tr class="even">
+<td>Sales</td>
+<td align="center">Sales in Millions of Dollars</td>
+</tr>
+<tr class="odd">
+<td>xad</td>
+<td align="center">Advertising expenditure in millions of dollars</td>
+</tr>
+<tr class="even">
+<td>xrd</td>
+<td align="center">R&amp;D expenditure in millions of dollars</td>
+</tr>
+<tr class="odd">
+<td>fmsize_at</td>
+<td align="center">Natural log of the book value of total assets</td>
+</tr>
+<tr class="even">
+<td>mksh2</td>
+<td align="center">Ratio of firm’s overall sales revenue to the sales revenue of all firms in the same 2-digit SIC code industry</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="analysis-using-r" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Analysis using R</h3>
+<p>Before beginning the tutorial, we need to make sure all necessary packages are installed. If any of these packages are not installed, write <code>install.packages("&lt;name of package&gt;")</code>. For example, to install the package <code>dplyr</code>, use <code>install.packages("dplyr")</code>.</p>
+<p>The next step is to include all the libraries we use in this exercise. An alternative approach is to load libraries specific to a function before using the function.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="week-1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="week-1.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="week-1.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="week-1.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fBasics)</span></code></pre></div>
+<p>The next step is to import data. We will use the <code>read_excel</code> function to import excel file into R.</p>
+<p>You can use the <a href="http://rfunction.com/archives/1001"><em>setwd</em></a> function to set the working directory to the folder which has your data or give the full path of your excel file wile reading the excel file.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="week-1.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Data</span></span>
+<span id="cb2-2"><a href="week-1.html#cb2-2" aria-hidden="true" tabindex="-1"></a>mini_case_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;Mini-case data.xlsx&quot;</span>)</span></code></pre></div>
+<div id="summary-statistics" class="section level4" number="1.1.3.1">
+<h4><span class="header-section-number">1.1.3.1</span> Summary Statistics</h4>
+<p>In R, there are multiple ways to check the summary statistics of your variables. (<a href="http://www.sthda.com/english/wiki/descriptive-statistics-and-graphics">Link 1</a>,<a href="https://www.statmethods.net/stats/descriptives.html">Link 2</a>)</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="week-1.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a list of variables you want summary statistics for</span></span>
+<span id="cb3-2"><a href="week-1.html#cb3-2" aria-hidden="true" tabindex="-1"></a>var_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;sales&quot;</span>,<span class="st">&quot;xad&quot;</span>,<span class="st">&quot;xrd&quot;</span>)</span>
+<span id="cb3-3"><a href="week-1.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a data.frame containing summary statistics of interest</span></span>
+<span id="cb3-4"><a href="week-1.html#cb3-4" aria-hidden="true" tabindex="-1"></a>summ_stats <span class="ot">&lt;-</span> fBasics<span class="sc">::</span><span class="fu">basicStats</span>(mini_case_data[var_list])</span>
+<span id="cb3-5"><a href="week-1.html#cb3-5" aria-hidden="true" tabindex="-1"></a>summ_stats <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(summ_stats))</span>
+<span id="cb3-6"><a href="week-1.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename some of the columns for convenience</span></span>
+<span id="cb3-7"><a href="week-1.html#cb3-7" aria-hidden="true" tabindex="-1"></a>summ_stats <span class="ot">&lt;-</span> summ_stats <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Stdev&quot;</span>, <span class="st">&quot;Minimum&quot;</span>, <span class="st">&quot;Maximum&quot;</span>)</span>
+<span id="cb3-8"><a href="week-1.html#cb3-8" aria-hidden="true" tabindex="-1"></a>summ_stats <span class="ot">&lt;-</span> summ_stats <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="st">&#39;N&#39;</span><span class="ot">=</span> <span class="st">&#39;nobs&#39;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+Stdev
+</th>
+<th style="text-align:right;">
+Minimum
+</th>
+<th style="text-align:right;">
+Maximum
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+sales
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+20081.5496
+</td>
+<td style="text-align:right;">
+34027.1812
+</td>
+<td style="text-align:right;">
+29.729
+</td>
+<td style="text-align:right;">
+160123
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+xad
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+485.2452
+</td>
+<td style="text-align:right;">
+806.1509
+</td>
+<td style="text-align:right;">
+0.397
+</td>
+<td style="text-align:right;">
+3698
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+xrd
+</td>
+<td style="text-align:right;">
+1000
+</td>
+<td style="text-align:right;">
+788.7484
+</td>
+<td style="text-align:right;">
+1716.4137
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+7400
+</td>
+</tr>
+</tbody>
+</table>
+<p>We can also compare summary statistics by grouping the data based on some categorical variables.</p>
+<p>In our case, we will group the data by <em>pure_b2b</em> and compare the summary statistics</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="week-1.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary stats - sales</span></span>
+<span id="cb4-2"><a href="week-1.html#cb4-2" aria-hidden="true" tabindex="-1"></a>summary_sales_by_group <span class="ot">&lt;-</span> mini_case_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(pure_b2b)<span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean_sales =</span> <span class="fu">mean</span>(sales),<span class="at">std_dev_sales =</span> <span class="fu">sd</span>(sales), <span class="at">min_sale =</span> <span class="fu">min</span>(sales), <span class="at">max_sales =</span> <span class="fu">max</span>(sales) )</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+pure_b2b
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+mean_sales
+</th>
+<th style="text-align:right;">
+std_dev_sales
+</th>
+<th style="text-align:right;">
+min_sale
+</th>
+<th style="text-align:right;">
+max_sales
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+873
+</td>
+<td style="text-align:right;">
+21026.72
+</td>
+<td style="text-align:right;">
+36148.236
+</td>
+<td style="text-align:right;">
+29.729
+</td>
+<td style="text-align:right;">
+160123
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+127
+</td>
+<td style="text-align:right;">
+13584.42
+</td>
+<td style="text-align:right;">
+9391.104
+</td>
+<td style="text-align:right;">
+2959.900
+</td>
+<td style="text-align:right;">
+53999
+</td>
+</tr>
+</tbody>
+</table>
+<p>Similarly we can compare for other variables.</p>
+</div>
+<div id="graph-of-mean-sales-b2b-vs.-non-b2b-firms" class="section level4" number="1.1.3.2">
+<h4><span class="header-section-number">1.1.3.2</span> Graph of Mean Sales (B2B vs. non-B2B Firms)</h4>
+<p>We can plot the mean sales for B2B vs. non-B2B Firms. You can use the code below as reference to plot other variables such as xad and xrd.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="week-1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert pure_b2b as a factor variable</span></span>
+<span id="cb5-2"><a href="week-1.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="week-1.html#cb5-3" aria-hidden="true" tabindex="-1"></a>summary_sales_by_group<span class="sc">$</span>pure_b2b <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(summary_sales_by_group<span class="sc">$</span>pure_b2b)</span>
+<span id="cb5-4"><a href="week-1.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="week-1.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb5-6"><a href="week-1.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_sales_by_group, <span class="fu">aes</span>(<span class="at">x =</span> pure_b2b, <span class="at">y =</span>mean_sales )) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="week-1.html#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb5-8"><a href="week-1.html#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Mean Sales&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="week-1.html#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;Mean of Sales by pure_b2b&quot;</span>)</span></code></pre></div>
+<p><img src="MBA-Course-Code-Book_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="sales-regression" class="section level4" number="1.1.3.3">
+<h4><span class="header-section-number">1.1.3.3</span> Sales Regression</h4>
+<p>For our sales regression</p>
+<ul>
+<li>Dependent Variable : sales</li>
+<li>Independet Variables: xad,xrd</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="week-1.html#cb6-1" aria-hidden="true" tabindex="-1"></a>sales_regression  <span class="ot">&lt;-</span>  <span class="fu">lm</span>(sales <span class="sc">~</span> xad<span class="sc">+</span>xrd , <span class="at">data =</span>mini_case_data )</span>
+<span id="cb6-2"><a href="week-1.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of the regression</span></span>
+<span id="cb6-3"><a href="week-1.html#cb6-3" aria-hidden="true" tabindex="-1"></a>sales_regression_coef <span class="ot">&lt;-</span> <span class="fu">summary</span>(sales_regression)<span class="sc">$</span>coefficients</span>
+<span id="cb6-4"><a href="week-1.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="week-1.html#cb6-5" aria-hidden="true" tabindex="-1"></a>sales_regression_r2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(sales_regression)<span class="sc">$</span>r.squared</span></code></pre></div>
+<ul>
+<li>Regression Coefficients</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+5273.430435
+</td>
+<td style="text-align:right;">
+881.2489482
+</td>
+<td style="text-align:right;">
+5.984042
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+xad
+</td>
+<td style="text-align:right;">
+25.077253
+</td>
+<td style="text-align:right;">
+1.2282534
+</td>
+<td style="text-align:right;">
+20.417002
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+xrd
+</td>
+<td style="text-align:right;">
+3.346444
+</td>
+<td style="text-align:right;">
+0.5768758
+</td>
+<td style="text-align:right;">
+5.800979
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<pre><code>-  Advertising (25.0773) and R&amp;D (3.3464) have a positive effect on revenue</code></pre>
+<ul>
+<li>R-squared (model fit index) is</li>
+</ul>
+<pre><code>## [1] 0.5117014</code></pre>
+<p>We can add more control variables to the regression model</p>
+<ul>
+<li>Control Variables: pure_b2b, fmsize_at, mksh2</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="week-1.html#cb9-1" aria-hidden="true" tabindex="-1"></a>sales_regression_with_controls  <span class="ot">&lt;-</span>  <span class="fu">lm</span>(sales <span class="sc">~</span> xad<span class="sc">+</span>xrd<span class="sc">+</span>pure_b2b<span class="sc">+</span>fmsize_at<span class="sc">+</span>mksh2 ,<span class="at">data =</span>mini_case_data )</span>
+<span id="cb9-2"><a href="week-1.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="week-1.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of the regression</span></span>
+<span id="cb9-4"><a href="week-1.html#cb9-4" aria-hidden="true" tabindex="-1"></a>sales_regression_with_controls_coef <span class="ot">&lt;-</span> <span class="fu">summary</span>(sales_regression_with_controls)<span class="sc">$</span>coefficients</span>
+<span id="cb9-5"><a href="week-1.html#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="week-1.html#cb9-6" aria-hidden="true" tabindex="-1"></a>sales_regression_with_controls_r2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(sales_regression_with_controls)<span class="sc">$</span>r.squared</span></code></pre></div>
+<p>For the new model</p>
+<ul>
+<li>Coefficients
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+-39982.337166
+</td>
+<td style="text-align:right;">
+3956.2692006
+</td>
+<td style="text-align:right;">
+-10.106071
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+xad
+</td>
+<td style="text-align:right;">
+15.939687
+</td>
+<td style="text-align:right;">
+1.1975483
+</td>
+<td style="text-align:right;">
+13.310267
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+xrd
+</td>
+<td style="text-align:right;">
+2.978288
+</td>
+<td style="text-align:right;">
+0.5275706
+</td>
+<td style="text-align:right;">
+5.645289
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pure_b2b
+</td>
+<td style="text-align:right;">
+-4806.439350
+</td>
+<td style="text-align:right;">
+2091.3768307
+</td>
+<td style="text-align:right;">
+-2.298218
+</td>
+<td style="text-align:right;">
+0.0217563
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fmsize_at
+</td>
+<td style="text-align:right;">
+5179.377667
+</td>
+<td style="text-align:right;">
+505.7198986
+</td>
+<td style="text-align:right;">
+10.241594
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mksh2
+</td>
+<td style="text-align:right;">
+104078.783632
+</td>
+<td style="text-align:right;">
+9682.0954844
+</td>
+<td style="text-align:right;">
+10.749613
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The relationship between control variables and sales makes sense</li>
+</ul></li>
+<li>R-squared (model fit index) is</li>
+</ul>
+<pre><code>## [1] 0.6434498</code></pre>
+<ul>
+<li>Model fit improves to 0.6434 from 0.5117</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="customer-model-analytics-i-regression-demo" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Customer Model Analytics I: Regression Demo</h2>
+<div id="task-description-1" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Task Description</h3>
+The goal is to predict customer satisfaction for B2B company based on the following variables (See “Regression Demo Satisfaction.xls”)
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Definition
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ResponseID
+</td>
+<td style="text-align:left;">
+Respondent ID
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OVERALLSATISFACTION
+</td>
+<td style="text-align:left;">
+Overall satisfaction with SUPPLIER
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BID
+</td>
+<td style="text-align:left;">
+Overall satisfaction with INITIAL SALES/BIDDING
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSQUAL
+</td>
+<td style="text-align:left;">
+Overall satisfaction with PRODUCT/SERVICE QUALITY
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PRICE
+</td>
+<td style="text-align:left;">
+Overall satisfaction with PRICING &amp; BILLING
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+INVOLVEMENT
+</td>
+<td style="text-align:left;">
+Involvement with the supplier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GENDER
+</td>
+<td style="text-align:left;">
+1= Female, 0= Male
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="analysis-using-r-1" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Analysis using R</h3>
+<p>We need to make sure all necessary packages are installed. If any of these packages are not installed, write <code>install.packages("&lt;name of package&gt;")</code>. The next step is to include all the libraries we use in this exercise.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="week-1.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb11-2"><a href="week-1.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-3"><a href="week-1.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fBasics)</span>
+<span id="cb11-4"><a href="week-1.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
+<p>The next step is to import data. We will use the <code>read_excel</code> function to import excel file into R.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-1.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Data</span></span>
+<span id="cb12-2"><a href="week-1.html#cb12-2" aria-hidden="true" tabindex="-1"></a>satisfaction_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;Regression Demo Satisfaction.xlsx&quot;</span>)</span></code></pre></div>
+<p>Some variables can be represented on an interval scale</p>
+<ul>
+<li>Examples: satisfaction, Income, height, price, and temperature</li>
+</ul>
+<p>Categorical variables can only be represented on a nominal scale</p>
+<ul>
+<li>Examples: gender, ethnicity, brand, or location</li>
+</ul>
+<p>In R, we can convert all the categorical variables into factors.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="week-1.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Data</span></span>
+<span id="cb13-2"><a href="week-1.html#cb13-2" aria-hidden="true" tabindex="-1"></a>satisfaction_data<span class="sc">$</span>GENDER <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(satisfaction_data<span class="sc">$</span>GENDER)</span></code></pre></div>
+<div id="summary-statistics-1" class="section level4" number="1.2.2.1">
+<h4><span class="header-section-number">1.2.2.1</span> Summary Statistics</h4>
+<p>Review the means of dependent and independent variables.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="week-1.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a list of variables you want summary statistics for</span></span>
+<span id="cb14-2"><a href="week-1.html#cb14-2" aria-hidden="true" tabindex="-1"></a>var_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;OVERALLSATISFACTION&quot;</span>,<span class="st">&quot;BID&quot;</span>,<span class="st">&quot;PSQUAL&quot;</span>, <span class="st">&quot;PRICE&quot;</span>, <span class="st">&quot;INVOLVEMENT&quot;</span>  )</span>
+<span id="cb14-3"><a href="week-1.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a data.frame containing summary statistics of interest</span></span>
+<span id="cb14-4"><a href="week-1.html#cb14-4" aria-hidden="true" tabindex="-1"></a>summ_stats <span class="ot">&lt;-</span> fBasics<span class="sc">::</span><span class="fu">basicStats</span>(satisfaction_data[var_list])</span>
+<span id="cb14-5"><a href="week-1.html#cb14-5" aria-hidden="true" tabindex="-1"></a>summ_stats <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(summ_stats))</span>
+<span id="cb14-6"><a href="week-1.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename some of the columns for convenience</span></span>
+<span id="cb14-7"><a href="week-1.html#cb14-7" aria-hidden="true" tabindex="-1"></a>summ_stats <span class="ot">&lt;-</span> summ_stats <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">&quot;nobs&quot;</span>,<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Stdev&quot;</span>, <span class="st">&quot;Minimum&quot;</span>, <span class="st">&quot;Maximum&quot;</span>)</span>
+<span id="cb14-8"><a href="week-1.html#cb14-8" aria-hidden="true" tabindex="-1"></a>summ_stats <span class="ot">&lt;-</span> summ_stats <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="st">&#39;N&#39;</span><span class="ot">=</span> <span class="st">&#39;nobs&#39;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+Stdev
+</th>
+<th style="text-align:right;">
+Minimum
+</th>
+<th style="text-align:right;">
+Maximum
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+OVERALLSATISFACTION
+</td>
+<td style="text-align:right;">
+575
+</td>
+<td style="text-align:right;">
+5.260870
+</td>
+<td style="text-align:right;">
+1.328375
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BID
+</td>
+<td style="text-align:right;">
+575
+</td>
+<td style="text-align:right;">
+5.241739
+</td>
+<td style="text-align:right;">
+1.294183
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSQUAL
+</td>
+<td style="text-align:right;">
+575
+</td>
+<td style="text-align:right;">
+5.299130
+</td>
+<td style="text-align:right;">
+1.336013
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PRICE
+</td>
+<td style="text-align:right;">
+575
+</td>
+<td style="text-align:right;">
+4.928696
+</td>
+<td style="text-align:right;">
+1.386895
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+INVOLVEMENT
+</td>
+<td style="text-align:right;">
+575
+</td>
+<td style="text-align:right;">
+5.422609
+</td>
+<td style="text-align:right;">
+1.440036
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Check if the means and standard deviations “make sense”</p></li>
+<li><p>Check the minimum and maximum values and see if they are “correct”</p></li>
+</ul>
+</div>
+<div id="correlation-among-the-variables" class="section level4" number="1.2.2.2">
+<h4><span class="header-section-number">1.2.2.2</span> Correlation among the variables</h4>
+<p>Review the correlation among the variables</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="week-1.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the correlations among variables in var_list </span></span>
+<span id="cb15-2"><a href="week-1.html#cb15-2" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(satisfaction_data[var_list])</span>
+<span id="cb15-3"><a href="week-1.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Rounding off to two digits</span></span>
+<span id="cb15-4"><a href="week-1.html#cb15-4" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="ot">&lt;-</span><span class="fu">round</span>(correlation_matrix, <span class="dv">3</span>)</span></code></pre></div>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+OVERALLSATISFACTION
+</th>
+<th style="text-align:right;">
+BID
+</th>
+<th style="text-align:right;">
+PSQUAL
+</th>
+<th style="text-align:right;">
+PRICE
+</th>
+<th style="text-align:right;">
+INVOLVEMENT
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+OVERALLSATISFACTION
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.625
+</td>
+<td style="text-align:right;">
+0.787
+</td>
+<td style="text-align:right;">
+0.679
+</td>
+<td style="text-align:right;">
+0.812
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BID
+</td>
+<td style="text-align:right;">
+0.625
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.638
+</td>
+<td style="text-align:right;">
+0.604
+</td>
+<td style="text-align:right;">
+0.586
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSQUAL
+</td>
+<td style="text-align:right;">
+0.787
+</td>
+<td style="text-align:right;">
+0.638
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.633
+</td>
+<td style="text-align:right;">
+0.727
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PRICE
+</td>
+<td style="text-align:right;">
+0.679
+</td>
+<td style="text-align:right;">
+0.604
+</td>
+<td style="text-align:right;">
+0.633
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+<td style="text-align:right;">
+0.635
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+INVOLVEMENT
+</td>
+<td style="text-align:right;">
+0.812
+</td>
+<td style="text-align:right;">
+0.586
+</td>
+<td style="text-align:right;">
+0.727
+</td>
+<td style="text-align:right;">
+0.635
+</td>
+<td style="text-align:right;">
+1.000
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>You want to see high correlation between the dependent variable and independent variables.</p></li>
+<li><p>You do want to see tremendously high correlation among the independent variables (since they should ideally capture different factors driving the dependent variable).</p></li>
+</ul>
+</div>
+<div id="regression-with-one-covariate" class="section level4" number="1.2.2.3">
+<h4><span class="header-section-number">1.2.2.3</span> Regression with one covariate</h4>
+<p>Let’s examine the statistical relationship between overall satisfaction and satisfaction with bidding</p>
+<ul>
+<li><p>Dependent variable: OVERALLSATISFACTION</p></li>
+<li><p>Independent variable(s): BID</p></li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-1.html#cb16-1" aria-hidden="true" tabindex="-1"></a>satisfaction_regression  <span class="ot">&lt;-</span>  <span class="fu">lm</span>(OVERALLSATISFACTION <span class="sc">~</span> BID , <span class="at">data =</span>satisfaction_data )</span>
+<span id="cb16-2"><a href="week-1.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of the regression</span></span>
+<span id="cb16-3"><a href="week-1.html#cb16-3" aria-hidden="true" tabindex="-1"></a>satisfaction_regression_coef <span class="ot">&lt;-</span> <span class="fu">summary</span>(satisfaction_regression)<span class="sc">$</span>coefficients</span>
+<span id="cb16-4"><a href="week-1.html#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="week-1.html#cb16-5" aria-hidden="true" tabindex="-1"></a>satisfaction_regression_r2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(satisfaction_regression)<span class="sc">$</span>r.squared</span></code></pre></div>
+<ul>
+<li>Regression Coefficients</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+1.898
+</td>
+<td style="text-align:right;">
+0.181
+</td>
+<td style="text-align:right;">
+10.504
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BID
+</td>
+<td style="text-align:right;">
+0.642
+</td>
+<td style="text-align:right;">
+0.033
+</td>
+<td style="text-align:right;">
+19.165
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Implies the following regression model: <code>Overall satisfaction = 1.898 +  0.642*Bidding Satisfaction</code></li>
+<li>R-squared (model fit index) is</li>
+</ul>
+<pre><code>## [1] 0.3906125</code></pre>
+</div>
+<div id="regression-with-all-the-variables" class="section level4" number="1.2.2.4">
+<h4><span class="header-section-number">1.2.2.4</span> Regression with all the variables</h4>
+<p>Let’s examine the statistical relationship between overall satisfaction and all the variables.</p>
+<ul>
+<li><p>Dependent variable: OVERALLSATISFACTION</p></li>
+<li><p>Independent variable(s): BID ,PSQUAL, PRICE, INVOLVEMENT and GENDER</p></li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="week-1.html#cb18-1" aria-hidden="true" tabindex="-1"></a>satisfaction_regression_all  <span class="ot">&lt;-</span>  <span class="fu">lm</span>(OVERALLSATISFACTION <span class="sc">~</span> BID<span class="sc">+</span>PSQUAL<span class="sc">+</span>PRICE<span class="sc">+</span>INVOLVEMENT<span class="sc">+</span>GENDER , <span class="at">data =</span>satisfaction_data )</span>
+<span id="cb18-2"><a href="week-1.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of the regression</span></span>
+<span id="cb18-3"><a href="week-1.html#cb18-3" aria-hidden="true" tabindex="-1"></a>satisfaction_regression_all_coef <span class="ot">&lt;-</span> <span class="fu">summary</span>(satisfaction_regression_all)<span class="sc">$</span>coefficients</span>
+<span id="cb18-4"><a href="week-1.html#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="week-1.html#cb18-5" aria-hidden="true" tabindex="-1"></a>satisfaction_regression_all_r2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(satisfaction_regression_all)<span class="sc">$</span>r.squared</span></code></pre></div>
+<ul>
+<li>Regression Coefficients</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Estimate
+</th>
+<th style="text-align:right;">
+Std. Error
+</th>
+<th style="text-align:right;">
+t value
+</th>
+<th style="text-align:right;">
+Pr(&gt;|t|)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+0.337
+</td>
+<td style="text-align:right;">
+0.148
+</td>
+<td style="text-align:right;">
+2.285
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BID
+</td>
+<td style="text-align:right;">
+0.067
+</td>
+<td style="text-align:right;">
+0.029
+</td>
+<td style="text-align:right;">
+2.273
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSQUAL
+</td>
+<td style="text-align:right;">
+0.331
+</td>
+<td style="text-align:right;">
+0.033
+</td>
+<td style="text-align:right;">
+10.036
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PRICE
+</td>
+<td style="text-align:right;">
+0.147
+</td>
+<td style="text-align:right;">
+0.028
+</td>
+<td style="text-align:right;">
+5.228
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+INVOLVEMENT
+</td>
+<td style="text-align:right;">
+0.392
+</td>
+<td style="text-align:right;">
+0.031
+</td>
+<td style="text-align:right;">
+12.774
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GENDER1
+</td>
+<td style="text-align:right;">
+-0.061
+</td>
+<td style="text-align:right;">
+0.060
+</td>
+<td style="text-align:right;">
+-1.018
+</td>
+<td style="text-align:right;">
+0.309
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Implies the following regression model: <code>Overall satisfaction = 0.337 +  0.067*Bidding Satisfaction +0.331* Product Quality Satisfaction + 0.147*Price Satisfaction+ 0.392*Involvement -0.061*Gender</code></li>
+<li>R-squared (model fit index) is</li>
+</ul>
+<pre><code>## [1] 0.7598821</code></pre>
+<p>Adding variables to the model changes results</p>
+<ul>
+<li>Let’s add all the strategic areas
+<ul>
+<li>Notice the improvement in R-squared</li>
+<li>Notice the significance of all areas</li>
+</ul></li>
+</ul>
+</div>
+<div id="interpreting-the-output--multicollinearity" class="section level4" number="1.2.2.5">
+<h4><span class="header-section-number">1.2.2.5</span> Interpreting the output- multicollinearity</h4>
+<p>Detecting multicollinearity</p>
+<ul>
+<li>Use VIF (variance inflation factor) defined as [1/(1-R2)]
+<ul>
+<li>an index that measures how much the variance of a coefficient is increased because of collinearity.</li>
+</ul></li>
+<li>Check if VIFs are less than 5 as a rule of thumb.</li>
+</ul>
+<p>The R function <code>vif()</code> [car package] can be used to detect multicollinearity in a regression model:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="week-1.html#cb20-1" aria-hidden="true" tabindex="-1"></a>model_vif <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">vif</span>(satisfaction_regression_all)</span></code></pre></div>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:right;">
+VIF
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+BID
+</td>
+<td style="text-align:right;">
+1.938
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSQUAL
+</td>
+<td style="text-align:right;">
+2.601
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PRICE
+</td>
+<td style="text-align:right;">
+2.037
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+INVOLVEMENT
+</td>
+<td style="text-align:right;">
+2.626
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GENDER
+</td>
+<td style="text-align:right;">
+1.206
+</td>
+</tr>
+</tbody>
+</table>
+<p>The VIF score for all the predictor variables is less than 5.</p>
+</div>
+<div id="regression-is-not-a-mechanical-process" class="section level4" number="1.2.2.6">
+<h4><span class="header-section-number">1.2.2.6</span> Regression is not a mechanical process</h4>
+<ul>
+<li><p>Look at the means of the dependent variables for different levels of each independent variable so you can see if you need to code it as a dummy variable or continuous variable</p></li>
+<li><p>Examine the VIFs to ensure your model is reasonably robust and not an artifact of multicollinearity</p></li>
+<li><p>Run at least 4-5 different models to get a ‘feel” for the underlying story. Which parameters are stable enough that they don’t change no matter if you drop or add variables?</p></li>
+<li><p>Dropping of variables, if necessary, should be done sequentially, one-at-a-time, and with a view to examining:</p>
+<ul>
+<li>change in R-squared</li>
+<li>change in /stability of parameters of retained variables</li>
+<li>managerial implications of dropping the variable on remaining variables</li>
+</ul></li>
+<li><p>Do compare the R-squared of different models to see the relative change in model fit. However, sometimes models with lower R-squared are better!</p></li>
+<li><p>When is an R-squared “too small,” such that the model is not useful?</p>
+<ul>
+<li>There is no clear relationship between the value of R-squared and the value of the model. The regression model has value to a firm if it allows the firm to increase its profits, and that is possible even with very small R-squared values. On the other hand, different model specifications for the same outcome can be compared (ranked) according to the R-squared values.</li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MBA Course Code Book.pdf", "MBA Course Code Book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
